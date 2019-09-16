@@ -16,6 +16,10 @@
 
 package com.faendir.acra.ui.base.statistics;
 
+import com.github.appreciated.apexcharts.ApexCharts;
+import com.github.appreciated.apexcharts.config.builder.ChartBuilder;
+import com.github.appreciated.apexcharts.config.chart.Type;
+import com.github.appreciated.apexcharts.helper.Series;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
@@ -43,8 +47,11 @@ class PieChart extends Chart<String> {
     }
 
     @Override
-    public JFreeChart createChart(@NonNull Map<String, Long> map) {
-        List<Map.Entry<String, Long>> values = new ArrayList<>(map.entrySet());
+    public ApexCharts createChart(@NonNull Map<String, Long> map) {
+        ApexCharts chart = new ApexCharts()
+                .withChart(ChartBuilder.get().withType(Type.pie).build())
+                .withSeries(map.entrySet().stream().map(e -> new Series<>(e.getKey(), e.getValue())).toArray(Series[]::new));
+        /*List<Map.Entry<String, Long>> values = new ArrayList<>(map.entrySet());
         values.sort((e1, e2) -> Long.compare(e2.getValue(), e1.getValue()));
         DefaultPieDataset dataset = new DefaultPieDataset();
         values.subList(0, Math.min(MAX_PARTS, values.size())).forEach(e -> dataset.insertValue(0, e.getKey(), e.getValue()));
@@ -69,7 +76,7 @@ class PieChart extends Chart<String> {
         plot.setLabelLinkStyle(PieLabelLinkStyle.QUAD_CURVE);
         plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} ({2})", NumberFormat.getNumberInstance(), new DecimalFormat("0.0%")));
         //noinspection unchecked
-        ((List<String>) dataset.getKeys()).forEach(key -> plot.setExplodePercent(key, 0.01));
+        ((List<String>) dataset.getKeys()).forEach(key -> plot.setExplodePercent(key, 0.01));*/
         return chart;
     }
 }

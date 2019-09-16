@@ -15,20 +15,9 @@
  */
 package com.faendir.acra.ui.base.statistics;
 
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.axis.NumberTickUnitSource;
-import org.jfree.chart.axis.ValueAxis;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.chart.plot.XYPlot;
-import org.jfree.chart.renderer.xy.StandardXYBarPainter;
-import org.jfree.chart.renderer.xy.XYBarRenderer;
-import org.jfree.data.time.Day;
-import org.jfree.data.time.TimeSeries;
-import org.jfree.data.time.TimeSeriesCollection;
+import com.github.appreciated.apexcharts.ApexCharts;
 import org.springframework.lang.NonNull;
 
-import java.awt.*;
 import java.util.Date;
 import java.util.Map;
 
@@ -42,8 +31,9 @@ class TimeChart extends Chart<Date> {
     }
 
     @Override
-    public JFreeChart createChart(@NonNull Map<Date, Long> map) {
-        TimeSeries series = new TimeSeries("Date");
+    public ApexCharts createChart(@NonNull Map<Date, Long> map) {
+        ApexCharts chart = new ApexCharts();
+        /*TimeSeries series = new TimeSeries("Date");
         series.add(new Day(new Date()), 0);
         map.forEach((date, count) -> series.addOrUpdate(new Day(date), count));
         JFreeChart chart = ChartFactory.createXYBarChart("",
@@ -81,7 +71,7 @@ class TimeChart extends Chart<Date> {
         barRenderer.setBarPainter(new StandardXYBarPainter());
         barRenderer.setSeriesPaint(0, Statistics.BLUE);
         barRenderer.setBarAlignmentFactor(0.5);
-        barRenderer.setMargin(0.2);
+        barRenderer.setMargin(0.2);*/
         return chart;
     }
 }
