@@ -13,7 +13,7 @@
     <properties>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>13</java.version>
+        <java.version>8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <vaadin.version>14.0.14</vaadin.version>
@@ -344,7 +344,7 @@
                         </goals>
                         <configuration>
                             <doclint>none</doclint>
-                            <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
+                            <javadocExecutable>/Library/Java/JavaVirtualMachines/jdk1.8.0_241.jdk/Contents/Home/bin/javadoc</javadocExecutable>
                         </configuration>
                     </execution>
                 </executions>

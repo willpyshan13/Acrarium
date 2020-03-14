@@ -56,6 +56,7 @@ public class Version implements Comparable<Version>{
         this.app = app;
         this.code = code;
         this.name = name;
+        this.mappings = "";
     }
 
     public Version(App app, int code, String name, String mappings) {
